@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlertMns.Context;
 using AlertMns.Models;
+using AlertMns.ViewModels;
 
 namespace AlertMns.Controllers
 {
@@ -54,11 +55,22 @@ namespace AlertMns.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,LastName,FirstName,Email,Password,CreationDate,ConnectionDate,Status")] User user)
+        public async Task<IActionResult> Create([Bind("LastName,FirstName,Email,Password")] UserViewModel user)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                // ID, CreationDate, ConnectionDate, Status
+                User newUser = new User()
+                {
+                    LastName = user.LastName,
+                    FirstName = user.FirstName,
+                    Email = user.Email,
+                    Password = user.Password,
+                    CreationDate = DateTime.Now,
+                    ConnectionDate = DateTime.Now,
+                    Status = false
+                };
+                _context.Add(newUser);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
