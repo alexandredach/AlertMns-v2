@@ -1,0 +1,318 @@
+/*-----------------SUMMARY-----------------*/
+/*
+Jump to sorted CSS elements by searching these keywords :
+1. NAVBAR
+2. MAIN
+3. MENU NAVBAR
+4. IMAGES
+5. COLORS
+6. DISPOSITION
+7. BUTTONS
+8. LOGIN PAGE
+9. RESPONSIVE
+*/
+
+/*-----------------NAVBAR-----------------*/
+.navbar {
+    z-index: 10;
+    height: 100%;
+    width: 310px;
+    color: #fff;
+    position: fixed;
+    padding: 0;
+    left: 0;
+    overflow: auto;
+    transition: all 0.3s ease;
+}
+
+/*-----------------MAIN-----------------*/
+
+/* margin bottom 120px for message box */
+.main-container {
+    padding: 0px 30px 0 350px;
+    min-height: 100vh;
+}
+
+.main-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    padding-top: 13px;
+    height: 10%;
+}
+
+h1 {
+    align-self: flex-end;
+    color: darkgrey;
+}
+
+p {
+    color: white;
+}
+
+/*-----------------MENU NAVBAR-----------------*/
+
+#menu-user-fullname {
+    padding-left: 15px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.menu-section-first {
+    margin: 10px 15px 0px 15px;
+    padding: 5px 0px 5px 10px;
+    background-color: #505467;
+    border-radius: 10px;
+}
+
+.menu-section-second {
+    margin-top: 5px;
+}
+
+.menu-section-second > ul > li {
+    padding: 5px 15px;
+}
+
+.menu-section-second > ul > li:hover {
+    background-color: #505467;
+    border-radius: 10px;
+    margin: 0 15px 0 0;
+    transition: 150ms;
+}
+
+.menu-section-third > ul > li {
+    padding: 0px 20px;
+}
+
+.menu-section-third > ul > li:hover {
+    background-color: #505467;
+    border-radius: 10px;
+    margin: 0 15px 0 0;
+    transition: 150ms;
+}
+
+ul > li > a {
+    margin: 10px 0 10px 0;
+    text-decoration: none;
+    color: white;
+}
+
+/*-----------------IMAGES-----------------*/
+.img-arrow-white {
+    float: right;
+    transition: transform 0.3s;
+}
+
+#icon-channel {
+    width: 38px;
+    margin-right: 10px;
+}
+
+#icon-chat {
+    width: 40px;
+    margin-right: 10px
+}
+
+#icon-user {
+    width: 55px;
+}
+
+#icon-parameters {
+    width: 40px;
+    margin-left: auto;
+}
+
+#logo-alertmns {
+    width: 500px;
+}
+
+#logo-alertmns-mainscreen {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.img-burger {
+    width: 30px;
+    height: 30px;
+}
+
+.img-close {
+    width: 30px;
+    height: 30px;
+}
+
+.img-notifications {
+    width: 30px;
+    margin-left: 20px;
+}
+
+/*navbar arrow img rotation*/
+.rotated {
+    transform: rotate(180deg);
+}
+
+/*-----------------COLORS-----------------*/
+
+.bg-gradientblue {
+    background-image: linear-gradient(to bottom, rgba(21, 27, 54, 0.00) 0%, #151B36 100%);
+    background-color: #313E74;
+}
+
+.bg-lightblue {
+    background-color: #313E74;
+}
+
+.bg-darkblue {
+    background-color: #151B36;
+}
+
+.bg-menu {
+    background-color: #505467 !important;
+}
+
+/*-----------------DISPOSITION-----------------*/
+
+.flex-grow-1 {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+/*suppression d'une marge provoquée par bootstrap.css*/
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+    --bs-gutter-x: 0;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    --bs-gutter-x: 1.5rem;
+}
+
+#form-connection {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*-----------------BUTTONS-----------------*/
+
+.button-burger {
+    align-self: flex-start;
+    width: 45px;
+    height: 45px;
+    display: none;
+    cursor: pointer;
+}
+
+.button-close {
+    width: 35px;
+    height: 35px;
+    display: none;
+    cursor: pointer;
+}
+
+button.btn-primary {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 210px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #EC6834;
+    border: none;
+}
+
+button.btn-primary:hover {
+    background-color: #FB8252; 
+}
+
+/*-----------------LOGIN PAGE-----------------*/
+#connexion-container,
+#welcome-text {
+    display: flex;
+    justify-content: center;
+}
+
+.home-password-link {
+    text-decoration: none !important;
+    color: white;
+}
+
+.home-password-link:hover {
+    color: #FB8252;
+    transition: 300ms;
+}
+
+#welcome-text {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+/*-----------------REGISTRATION PAGE-----------------*/
+.container-registration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 10%);
+}
+
+#form-registration > div > input {
+    width: 300px;
+}
+
+#form-registration > div > select {
+    width: 300px;
+    height: 35px;
+}
+
+
+/*-----------------RESPONSIVE-----------------*/
+
+
+@media (max-width: 1024px) {
+    .button-burger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-close {
+        display: block;
+    }
+    
+    .navbar {
+        left: -576px;
+    }
+    
+    .main-container {
+        padding: 0px 30px 120px 30px;
+    }
+
+    .main-header {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        width: 100%;
+    }
+}
