@@ -44,6 +44,14 @@ Jump to sorted CSS elements by searching these keywords :
     height: 10%;
 }
 
+/*Contenu d'une div>row>col centré sur le conteneur du main hors header*/
+.container-centered {
+    display: flex;
+    align-items: center;
+    height: 90vh;
+    --bs-gutter-x: 1.5rem;
+}
+
 h1 {
     align-self: flex-end;
     color: darkgrey;
@@ -59,16 +67,26 @@ p {
     padding-left: 15px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #007bff;
-}
-
 .menu-section-first {
     margin: 10px 15px 0px 15px;
     padding: 5px 0px 5px 10px;
     background-color: #505467;
     border-radius: 10px;
+}
+
+.navbar a,
+.navbar a:active,
+.navbar a:hover,
+.navbar a:focus {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.menu-section-second a,
+.menu-section-second a:hover,
+.menu-section-second a:active,
+.menu-section-second a:focus {
+    color: whitesmoke;
 }
 
 .menu-section-second {
@@ -77,6 +95,7 @@ p {
 
 .menu-section-second > ul > li {
     padding: 5px 15px;
+    color: whitesmoke;
 }
 
 .menu-section-second > ul > li:hover {
@@ -86,10 +105,25 @@ p {
     transition: 150ms;
 }
 
-.menu-section-third > ul > li {
-    padding: 0px 20px;
+.menu-section-third a,
+.menu-section-third a:hover,
+.menu-section-third a:active,
+.menu-section-third a:focus {
+    color: whitesmoke;
 }
 
+/*Marge de la 3e section*/
+.menu-section-third a {
+    margin: 10px 0 10px 0;
+    text-decoration: none;
+}
+
+.menu-section-third > ul > li {
+    padding: 0px 20px;
+    color: none;
+}
+
+/*Surbrillance au hover*/
 .menu-section-third > ul > li:hover {
     background-color: #505467;
     border-radius: 10px;
@@ -97,10 +131,9 @@ p {
     transition: 150ms;
 }
 
-ul > li > a {
-    margin: 10px 0 10px 0;
-    text-decoration: none;
-    color: white;
+/*Suppression d'une couleur auto sur les dropdown par Bootstrap*/
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: transparent;
 }
 
 /*-----------------IMAGES-----------------*/
@@ -195,7 +228,8 @@ ul > li > a {
     --bs-gutter-x: 0;
 }
 
-.centered {
+/*Contenu d'une div>row>col centré sur un full screen*/
+.full-centered {
     display: flex;
     align-items: center;
     height: 100vh;
@@ -274,8 +308,12 @@ button.btn-primary:hover {
     min-height: calc(100vh - 10%);
 }
 
-#form-registration > div > input {
-    width: 300px;
+/*#form-registration > div > input {
+    width: 100%;
+}*/
+
+.input-registration {
+    width: 400px;
 }
 
 #form-registration > div > select {

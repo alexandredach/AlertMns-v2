@@ -1,0 +1,88 @@
+﻿<nav class="navbar navbar-expand-lg bg-darkblue">
+    <div class="d-flex flex-column h-100" >
+        <div class="p-3 mb-2">
+            <div class="d-flex">
+                <a href="#">
+                    <img src="~/img/AlertMNS-logo.svg" class="img-fluid" alt="Logo AlertMNS"/>
+                </a>
+                <a class="button-close">
+                    <img src="~/img/button-close.svg" class="img-close" alt="Bouton fermer menu"/>
+                </a>
+            </div>
+        </div>
+        <div class="flex-grow-1">
+            <div>
+                <a class="nav-link collapsed menu-section-first rotatable" href="#" data-bs-toggle="collapse" data-bs-target="#salonsCollapse" aria-expanded="false">
+                    Salons
+                    <img class="img-arrow-white" src="~/img/arrow-expand-white.png"/>
+                </a>
+                <div class="collapse menu-section-second" id="salonsCollapse">
+                    <ul class="list-unstyled ps-3">
+                        <li>
+                            <a class="dropdown-item-inline" href="#"><img id="icon-channel" src="~/img/icon-channel.png" alt="Icône de salon de discussion">Secrétariat</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item-inline" href="#"><img id="icon-channel" src="~/img/icon-channel.png" alt="Icône de salon de discussion">Ressources Humaines</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <a class="nav-link collapsed menu-section-first rotatable" href="#" data-bs-toggle="collapse" data-bs-target="#chatsCollapse" aria-expanded="false">
+                    Discussions privées
+                    <img class="img-arrow-white" src="~/img/arrow-expand-white.png"/>
+                </a>
+                <div class="collapse menu-section-second" id="chatsCollapse">
+                    <ul class="list-unstyled ps-3">
+                        <li>
+                            <a class="dropdown-item-inline" href="#"><img id="icon-chat" src="~/img/icon-user.png" alt="Image de l'utilisateur">Stéphanie BONNE</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item-inline" href="#"><img id="icon-chat" src="~/img/icon-user.png" alt="Image de l'utilisateur">Franck QUIRIN</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item-inline" href="#"><img id="icon-chat" src="~/img/icon-user.png" alt="Image de l'utilisateur">Théo GAMORY</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <a class="nav-link collapsed menu-section-first rotatable" href="#" data-bs-toggle="collapse" data-bs-target="#organizerCollapse" aria-expanded="false">
+                    Agenda
+                    <img class="img-arrow-white" src="~/img/arrow-expand-white.png"/>
+                </a>
+                <div class="collapse menu-section-third" id="organizerCollapse">
+                    <ul class="list-unstyled ps-3">
+                        <li><a class="dropdown-item" href="#">Planifier une réunion</a></li>
+                        <li><a class="dropdown-item" href="#">Consulter l'agenda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <a class="nav-link collapsed menu-section-first rotatable" href="#" data-bs-toggle="collapse" data-bs-target="#adminCollapse" aria-expanded="false">
+                    Administration
+                    <img class="img-arrow-white" src="~/img/arrow-expand-white.png"/>
+                </a>
+                <div class="collapse menu-section-third" id="adminCollapse">
+                    <ul class="list-unstyled ps-3">
+                        <li><a class="dropdown-item" href="#">Gestion des utilisateurs</a></li>
+                        <li><a class="dropdown-item" href="#">Gestion de l'organisation</a></li>
+                        <li><a class="dropdown-item" href="#">Gestion des services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="p-3 d-flex justify-content-between bg-menu">
+            <div class="d-flex align-items-center">
+                <img src="~/img/icon-user.png" id="icon-user" class="rounded-circle" alt="Icône utilisateur">
+                <div id="menu-user-fullname">
+                    <p class="mb-0 fw-bold">John DOE</p>
+                    <p class="mb-0 fw-light fst-italic">Responsable RH</p>
+                </div>
+            </div>
+            <div class="align-self-center">
+                <a href="/Paramètres"><img id="icon-parameters" src="~/img/icon-parameters.png" alt="Icône de paramètres"></a>
+            </div>
+        </div>
+    </div>
+</nav>
