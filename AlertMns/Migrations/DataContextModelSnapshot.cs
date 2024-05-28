@@ -24,11 +24,11 @@ namespace AlertMns.Migrations
 
             modelBuilder.Entity("AlertMns.Models.Channel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ChannelId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ChannelId"));
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime(6)");
@@ -41,35 +41,35 @@ namespace AlertMns.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("ChannelId");
 
                     b.ToTable("Channels");
                 });
 
             modelBuilder.Entity("AlertMns.Models.Company", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CompanyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("CompanyId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("CompanyId");
 
                     b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("AlertMns.Models.Meeting", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MeetingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("MeetingId"));
 
                     b.Property<DateTime>("DateEnd")
                         .HasColumnType("datetime(6)");
@@ -89,18 +89,18 @@ namespace AlertMns.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("MeetingId");
 
                     b.ToTable("Meetings");
                 });
 
             modelBuilder.Entity("AlertMns.Models.Message", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MessageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("MessageId"));
 
                     b.Property<string>("Attachment")
                         .IsRequired()
@@ -113,18 +113,18 @@ namespace AlertMns.Migrations
                     b.Property<DateTime>("DispatchDate")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("Id");
+                    b.HasKey("MessageId");
 
                     b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("AlertMns.Models.Notification", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("NotificationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("NotificationId"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -133,71 +133,74 @@ namespace AlertMns.Migrations
                     b.Property<DateTime>("DispatchDate")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("Id");
+                    b.HasKey("NotificationId");
 
                     b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("AlertMns.Models.NotificationType", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("NotificationTypeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("NotificationTypeId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("NotificationTypeId");
 
                     b.ToTable("NotificationTypes");
                 });
 
             modelBuilder.Entity("AlertMns.Models.Position", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PositionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("PositionId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("PositionId");
 
                     b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("AlertMns.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("RoleId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("RoleId");
 
                     b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("AlertMns.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("UserId"));
 
-                    b.Property<DateTime>("ConnectionDate")
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ConnectionDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("CreationDate")
@@ -219,21 +222,27 @@ namespace AlertMns.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("AlertMns.Models.WorkTime", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("WorkTimeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("WorkTimeId"));
 
                     b.Property<DateTime>("ArrivalTime")
                         .HasColumnType("datetime(6)");
@@ -241,7 +250,7 @@ namespace AlertMns.Migrations
                     b.Property<DateTime>("DepartureTime")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("Id");
+                    b.HasKey("WorkTimeId");
 
                     b.ToTable("WorkTimes");
                 });

@@ -47,7 +47,7 @@
                                 <option value="">--Choisir une organisation--</option>
                                 @foreach (var item in Model.Companies)
                                 {
-                                    <option value="@item.Id">@item.Name</option>
+                                    <option value="@item.CompanyId">@item.Name</option>
                                 }
                             </select>
                             <span asp-validation-for="CompanyId" class="text-danger"></span>
@@ -58,7 +58,7 @@
                                 <option value="">--Choisir une fonction--</option>
                                 @foreach (var item in Model.Positions)
                                 {
-                                    <option value="@item.Id">@item.Name</option>
+                                    <option value="@item.PositionId">@item.Name</option>
                                 }
                             </select>
                             <span asp-validation-for="PositionId" class="text-danger"></span>

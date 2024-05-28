@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AlertMns.Context;
 using AlertMns.Models;
 using AlertMns.ViewModels;
-using System.Data.Entity;
 
 namespace AlertMns.Controllers
 {
@@ -62,7 +56,7 @@ namespace AlertMns.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LastName,FirstName,Email,Password, IdCompany, IdPosition")] UserViewModel user)
+        public async Task<IActionResult> Create([Bind("LastName,FirstName,Email,Password, CompanyId, PositionId")] UserViewModel user)
         {
             if (ModelState.IsValid)
             {

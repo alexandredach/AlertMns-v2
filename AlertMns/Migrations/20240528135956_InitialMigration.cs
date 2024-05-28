@@ -19,7 +19,7 @@ namespace AlertMns.Migrations
                 name: "Channels",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ChannelId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -29,7 +29,7 @@ namespace AlertMns.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Channels", x => x.Id);
+                    table.PrimaryKey("PK_Channels", x => x.ChannelId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -37,14 +37,14 @@ namespace AlertMns.Migrations
                 name: "Companies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    CompanyId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Companies", x => x.Id);
+                    table.PrimaryKey("PK_Companies", x => x.CompanyId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -52,7 +52,7 @@ namespace AlertMns.Migrations
                 name: "Meetings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    MeetingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Subject = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -65,7 +65,7 @@ namespace AlertMns.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Meetings", x => x.Id);
+                    table.PrimaryKey("PK_Meetings", x => x.MeetingId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -73,7 +73,7 @@ namespace AlertMns.Migrations
                 name: "Messages",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    MessageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -83,7 +83,7 @@ namespace AlertMns.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Messages", x => x.Id);
+                    table.PrimaryKey("PK_Messages", x => x.MessageId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -91,7 +91,7 @@ namespace AlertMns.Migrations
                 name: "Notifications",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    NotificationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -99,7 +99,7 @@ namespace AlertMns.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                    table.PrimaryKey("PK_Notifications", x => x.NotificationId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -107,14 +107,14 @@ namespace AlertMns.Migrations
                 name: "NotificationTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    NotificationTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NotificationTypes", x => x.Id);
+                    table.PrimaryKey("PK_NotificationTypes", x => x.NotificationTypeId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -122,14 +122,14 @@ namespace AlertMns.Migrations
                 name: "Positions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    PositionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Positions", x => x.Id);
+                    table.PrimaryKey("PK_Positions", x => x.PositionId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -137,14 +137,14 @@ namespace AlertMns.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    RoleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.Id);
+                    table.PrimaryKey("PK_Roles", x => x.RoleId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -152,7 +152,7 @@ namespace AlertMns.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LastName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -163,12 +163,15 @@ namespace AlertMns.Migrations
                     Password = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ConnectionDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    ConnectionDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CompanyId = table.Column<int>(type: "int", nullable: false),
+                    PositionId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -176,14 +179,14 @@ namespace AlertMns.Migrations
                 name: "WorkTimes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    WorkTimeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ArrivalTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     DepartureTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorkTimes", x => x.Id);
+                    table.PrimaryKey("PK_WorkTimes", x => x.WorkTimeId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
