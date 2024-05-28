@@ -1,8 +1,11 @@
-﻿namespace AlertMns.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AlertMns.Models
 {
     public class WorkTime
     {
-        public int Id { get; set; }
+        [Key]
+        public int WorkTimeId { get; set; }
         public DateTime ArrivalTime { get; set; }
         public DateTime DepartureTime { get; set; }
     }

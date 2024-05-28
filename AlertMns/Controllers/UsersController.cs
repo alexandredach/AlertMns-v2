@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AlertMns.Context;
 using AlertMns.Models;
 using AlertMns.ViewModels;
+using System.Data.Entity;
 
 namespace AlertMns.Controllers
 {
@@ -35,7 +36,7 @@ namespace AlertMns.Controllers
             }
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
                 return NotFound();
@@ -47,7 +48,13 @@ namespace AlertMns.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            return View();
+            var viewModel = new UserViewModel()
+            {
+                Companies = _context.Companies.ToList(),
+                Positions = _context.Positions.ToList(),
+                Roles = _context.Roles.ToList()
+            };
+            return View(viewModel);
         }
 
         // POST: Users/Create
@@ -55,21 +62,33 @@ namespace AlertMns.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LastName,FirstName,Email,Password")] UserViewModel user)
+        public async Task<IActionResult> Create([Bind("LastName,FirstName,Email,Password, IdCompany, IdPosition")] UserViewModel user)
         {
             if (ModelState.IsValid)
             {
-                // ID, CreationDate, ConnectionDate, Status
                 User newUser = new User()
                 {
                     LastName = user.LastName,
                     FirstName = user.FirstName,
                     Email = user.Email,
                     Password = user.Password,
+                    CompanyId = user.CompanyId,
+                    PositionId = user.PositionId,
+                    RoleId = 3, // rôle utilisateur par défaut (ayant le moins de droits, par sécurité)
                     CreationDate = DateTime.Now,
-                    ConnectionDate = DateTime.Now,
+                    ConnectionDate = null,
                     Status = false
                 };
+
+                // Attribution du rôle en fonction du poste occupé (si différent du rôle par défaut)
+                if (user.PositionId == 1 || user.PositionId == 2 || user.PositionId == 3 || user.PositionId == 4)
+                {
+                    newUser.RoleId = 1;
+                } else if (user.PositionId == 5)
+                {
+                    newUser.RoleId = 2;
+                }
+
                 _context.Add(newUser);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -100,7 +119,7 @@ namespace AlertMns.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,LastName,FirstName,Email,Password,CreationDate,ConnectionDate,Status")] User user)
         {
-            if (id != user.Id)
+            if (id != user.UserId)
             {
                 return NotFound();
             }
@@ -114,7 +133,7 @@ namespace AlertMns.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
+                    if (!UserExists(user.UserId))
                     {
                         return NotFound();
                     }
@@ -137,7 +156,7 @@ namespace AlertMns.Controllers
             }
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.UserId == id);
             if (user == null)
             {
                 return NotFound();
@@ -163,7 +182,7 @@ namespace AlertMns.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.UserId == id);
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿namespace AlertMns.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AlertMns.Models
 {
     public class Position
     {
-        public int Id { get; set; }
+        [Key]
+        public int PositionId { get; set; }
         public string Name { get; set; }
     }
 }

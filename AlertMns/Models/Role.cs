@@ -1,8 +1,11 @@
-﻿namespace AlertMns.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AlertMns.Models
 {
     public class Role
     {
-        public int Id { get; set; }
+        [Key]
+        public int RoleId { get; set; }
         public string Name { get; set; }
     }
 }

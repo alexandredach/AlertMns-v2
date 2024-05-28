@@ -1,8 +1,11 @@
-﻿namespace AlertMns.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AlertMns.Models
 {
     public class Meeting
     {
-        public int Id { get; set; }
+        [Key]
+        public int MeetingId { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
         public DateTime DateStart { get; set; }

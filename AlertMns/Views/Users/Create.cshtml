@@ -16,9 +16,6 @@
     </div>
     <div class="container-registration">
         <div class="container-centered">
-            @* <div class="row d-flex justify-content-center">
-                <p>Veuillez renseigner les données de l'utilisateur</p>
-            </div> *@
             <div class="row">
                 <div class="col text-light">
                     <p>Veuillez renseigner les données de l'utilisateur</p>
@@ -36,33 +33,36 @@
                         </div>
                         <div class="mb-3 w-50 form-group">
                             <label asp-for="Email" class="control-label">E-mail</label>
-                            <input asp-for="Email" class="form-control input-registration" />
+                            <input asp-for="Email" type="email" class="form-control input-registration" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Password" class="control-label">Mot de passe</label>
-                            <input asp-for="Password" class="form-control input-registration" />
+                            <input asp-for="Password" type="password" class="form-control input-registration" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
-                        @* <div class="mb-3 w-50 form-group">
-                            <label for="organization-select">Organisation</label><br />
-                            <select name="organization-select" id="organization">
+                        <div class="mb-3 w-50 form-group">
+                            <label asp-for="CompanyId">Organisation</label><br />
+                            <select asp-for="CompanyId" class="form-control input-registration" >
                                 <option value="">--Choisir une organisation--</option>
-                                <option value="IFA">IFA</option>
-                                <option value="MNS">Metz Numeric School</option>
+                                @foreach (var item in Model.Companies)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
                             </select>
+                            <span asp-validation-for="CompanyId" class="text-danger"></span>
                         </div>
                         <div class="mb-3 w-50 form-group">
-                            <label for="role-select">Rôle</label><br />
-                            <select name="role-select" id="role">
-                                <option value="">--Choisir un rôle--</option>
-                                <option value="responsable-rh">Responsable RH</option>
-                                <option value="assistant-rh">Assistant RH</option>
-                                <option value="responsable-formation">Responsable formation</option>
-                                <option value="formateur">Formateur</option>
-                                <option value="assistant-administratif">Assistant administratif</option>
+                            <label asp-for="PositionId">Fonction</label><br />
+                            <select asp-for="PositionId" class="form-control input-registration">
+                                <option value="">--Choisir une fonction--</option>
+                                @foreach (var item in Model.Positions)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
                             </select>
-                        </div> *@
+                            <span asp-validation-for="PositionId" class="text-danger"></span>
+                        </div>
                         <div class="form-group">
                             <button type="submit" value="Create" class="btn btn-primary">Enregistrer</button>
                         </div>
