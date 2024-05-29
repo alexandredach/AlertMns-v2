@@ -1,71 +1,43 @@
-﻿@model IEnumerable<AlertMns.Models.User>
+﻿@model AlertMns.ViewModels.UserViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Gestion utilisateurs";
 }
 
-<h1>Index</h1>
+<div class="container-fluid bg-lightblue main-container">
+    <div class="main-header bg-lightblue">
+        <a class="button-burger">
+            <img src="~/img/burger-menu-w.svg" class="img-burger" alt="Image menu" />
+        </a>
+        <h1>Gestion des utilisateurs</h1>
+        <a>
+            <img src="~/img/notifications-white.svg" class="img-notifications" alt="Image des notifications" />
+        </a>
+    </div>
+    <div class="container-main-content">
+        <div class="container-centered">
+            <div class="row">
+                <div class="col text-light">
+                    <h2>Créer un compte utilisateur</h2>
+                    <p>Accéder à la page de création d'un utilisateur en cliquant sur le bouton ci-dessous.</p>
+                    <a asp-controller="Users" asp-action="Create" class="btn btn-primary btn-orange">Nouvel utilisateur</a>
+                    <h2>Modifier / supprimer un utilisateur.</h2>
+                    <p>Rechercher un utilisateur ci-dessous pour afficher ses données et les modifier ou supprimer l’utilisateur.</p>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Rechercher un utilisateur...">
+                        <button type="submit" class="search-button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConnectionDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConnectionDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
-            </td>
-        </tr>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-    </tbody>
-</table>
+

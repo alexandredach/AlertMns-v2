@@ -1,7 +1,7 @@
 ﻿using AlertMns.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AlertMns.Context
+namespace AlertMns.Data
 {
     public class DataContext : DbContext
     {

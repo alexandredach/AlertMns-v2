@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AlertMns.Context;
 using AlertMns.Models;
 using AlertMns.ViewModels;
+using AlertMns.Data;
 
 namespace AlertMns.Controllers
 {
@@ -15,10 +15,10 @@ namespace AlertMns.Controllers
             _context = context;
         }
 
-        // GET: Users
-        public async Task<IActionResult> Index()
+        // Users
+        public IActionResult Index()
         {
-            return View(await _context.Users.ToListAsync());
+            return View();
         }
 
         // GET: Users/Details/5

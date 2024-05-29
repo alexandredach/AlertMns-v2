@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AlertMns.Models.Meeting>
+
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+<div class="container-fluid bg-lightblue main-container">
+    <div class="main-header bg-lightblue">
+        <a class="button-burger">
+            <img src="~/img/burger-menu-w.svg" class="img-burger" alt="Image menu" />
+        </a>
+        <h1>Accueil</h1>
+        <a>
+            <img src="~/img/notifications-white.svg" class="img-notifications" alt="Image des notifications" />
+        </a>
+    </div>
+    <div class="container-main-content">
+        <div class="container-centered">
+            <div class="row">
+                <div class="col text-light">
+                    <h2>Bonjour !</h2>
+                    <p>Vos prochaines réunions</p>
+                    <table class="table text-light">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Subject)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateStart)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateEnd)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Subject)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateStart)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateEnd)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

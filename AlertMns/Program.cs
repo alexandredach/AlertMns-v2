@@ -1,4 +1,4 @@
-using AlertMns.Context;
+using AlertMns.Data;
 using Microsoft.EntityFrameworkCore;
 
 

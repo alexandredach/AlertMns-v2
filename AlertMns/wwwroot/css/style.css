@@ -8,8 +8,10 @@ Jump to sorted CSS elements by searching these keywords :
 5. COLORS
 6. DISPOSITION
 7. BUTTONS
-8. LOGIN PAGE
-9. RESPONSIVE
+8. SEARCH FORM
+9. LOGIN PAGE
+10.REGISTRATION
+11.RESPONSIVE
 */
 
 /*-----------------NAVBAR-----------------*/
@@ -42,6 +44,13 @@ Jump to sorted CSS elements by searching these keywords :
     z-index: 9;
     padding-top: 13px;
     height: 10%;
+}
+
+.container-main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 10%);
 }
 
 /*Contenu d'une div>row>col centré sur le conteneur du main hors header*/
@@ -210,6 +219,10 @@ p {
     background-color: #505467 !important;
 }
 
+.container-main-content {
+    color: whitesmoke !important;
+}
+
 /*-----------------DISPOSITION-----------------*/
 
 .flex-grow-1 {
@@ -276,6 +289,45 @@ button.btn-primary:hover {
     background-color: #FB8252; 
 }
 
+.btn-orange {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 210px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #EC6834;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #FB8252;
+}
+
+/*-----------------SEARCH FORM-----------------*/
+
+
+.search-container {
+    position: relative;
+    width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 40px 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+.search-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+}
+
 /*-----------------LOGIN PAGE-----------------*/
 #connexion-container,
 #welcome-text {
@@ -301,12 +353,7 @@ button.btn-primary:hover {
 }
 
 /*-----------------REGISTRATION PAGE-----------------*/
-.container-registration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 10%);
-}
+
 
 /*#form-registration > div > input {
     width: 100%;
