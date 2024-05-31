@@ -1,14 +1,12 @@
 ﻿using AlertMns.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlertMns.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
-        public DataContext(DbContextOptions<DataContext> options)
-            : base(options)
-        {
-        }
         public DbSet<Channel> Channels { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
@@ -19,5 +17,17 @@ namespace AlertMns.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<WorkTime> WorkTimes { get; set; }
+
+        public DataContext(DbContextOptions<DataContext> options)
+            : base(options)
+        {
+        }
+
+        // Modifications pour la migration initiale
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    
+        //}
     }
 }
+

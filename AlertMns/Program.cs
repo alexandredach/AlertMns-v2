@@ -1,4 +1,6 @@
 using AlertMns.Data;
+using AlertMns.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -13,6 +15,18 @@ builder.Services.AddDbContext<DataContext>(options =>
 // Écoute sur toutes les interfaces réseau
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddIdentity<User, IdentityRole>(
+    options =>
+    {
+        options.Password.RequiredUniqueChars = 0;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredLength = 8;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireLowercase = false;
+    })
+    .AddEntityFrameworkStores<DataContext>()
+    .AddDefaultTokenProviders();
 
 var app = builder.Build();
 
