@@ -3,34 +3,47 @@ using Microsoft.EntityFrameworkCore;
 using AlertMns.Models;
 using AlertMns.ViewModels;
 using AlertMns.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AlertMns.Controllers
 {
+    [Authorize] /*> pour contrôleur Home(séparé) qui force le login avant d'accéder aux liens*/
     public class HomeController : Controller
     {
         private readonly DataContext _context;
+        private readonly SignInManager<User> signInManager;
 
-        public HomeController(DataContext context)
+        public HomeController(SignInManager<User> signInManager, DataContext context)
         {
+            this.signInManager = signInManager;
             _context = context;
         }
 
-        public IActionResult Index()
+        [AllowAnonymous]
+        public IActionResult Login()
         {
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Login(UserCredentials credentials)
-        //{
-        //    // Logique de vérification des identifiants et de connexion
-        //    // ...
+        [HttpPost]
+        public async Task<IActionResult> LoginAsync(LoginViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(model.Email!, model.Password!, model.RememberMe, false);
 
-        //    // Si les identifiants sont corrects, redirige vers l'action Dashboard
-        //    return RedirectToAction("Dashboard");
-        //}
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                ModelState.AddModelError("", "Identifiant / mot de passe erronnés");
+                return View(model);
+            }
+            return View(model);
+        }
 
-        // GET: Home/Dashboard
+        //GET: Home/Dashboard
         public async Task<IActionResult> Dashboard()
         {
             return View(await _context.Meetings.ToListAsync());

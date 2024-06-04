@@ -11,7 +11,7 @@
 </head>
 <body>
     @if (ViewContext.RouteData.Values["Controller"].ToString() != "Home" ||
-    ViewContext.RouteData.Values["Action"].ToString() != "Index")
+    ViewContext.RouteData.Values["Action"].ToString() != "Login")
     {
         @Html.Partial("_NavBar")
     }

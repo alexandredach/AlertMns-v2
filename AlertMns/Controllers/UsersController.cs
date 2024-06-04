@@ -3,16 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using AlertMns.Models;
 using AlertMns.ViewModels;
 using AlertMns.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace AlertMns.Controllers
 {
     public class UsersController : Controller
     {
         private readonly DataContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public UsersController(DataContext context)
+        public UsersController(DataContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // Users
@@ -39,56 +42,64 @@ namespace AlertMns.Controllers
         //    return View(user);
         //}
 
-        //// GET: Users/Create
-        //public IActionResult Create()
-        //{
-        //    var viewModel = new UserViewModel()
-        //    {
-        //        Companies = _context.Companies.ToList(),
-        //        Positions = _context.Positions.ToList(),
-        //        Roles = _context.Roles.ToList()
-        //    };
-        //    return View(viewModel);
-        //}
+        // GET: Users/Create
+        public IActionResult Create()
+        {
+            var viewModel = new RegisterViewModel()
+            {
+                Companies = _context.Companies.ToList(),
+                Positions = _context.Positions.ToList(),
+                Roles = _context.Roles.ToList()
+            };
+            return View(viewModel);
+        }
 
-        //// POST: Users/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("LastName,FirstName,Email,Password, CompanyId, PositionId")] UserViewModel user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        User newUser = new User()
-        //        {
-        //            LastName = user.LastName,
-        //            FirstName = user.FirstName,
-        //            Email = user.Email,
-        //            Password = user.Password,
-        //            CompanyId = user.CompanyId,
-        //            PositionId = user.PositionId,
-        //            RoleId = 3, // rôle utilisateur par défaut (ayant le moins de droits, par sécurité)
-        //            CreationDate = DateTime.Now,
-        //            ConnectionDate = null,
-        //            Status = false
-        //        };
+        // POST: Users/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User newUser = new User()
+                {
+                    LastName = model.LastName,
+                    FirstName = model.FirstName,
+                    Email = model.Email,
+                    UserName = model.Email,
+                    CompanyId = model.CompanyId,
+                    PositionId = model.PositionId,
+                    RoleId = 3, // rôle utilisateur par défaut (ayant le moins de droits, par sécurité)
+                    CreationDate = DateTime.Now,
+                    ConnectionDate = null,
+                    Status = false
+                };
 
-        //        // Attribution du rôle en fonction du poste occupé (si différent du rôle par défaut)
-        //        if (user.PositionId == 1 || user.PositionId == 2 || user.PositionId == 3 || user.PositionId == 4)
-        //        {
-        //            newUser.RoleId = 1;
-        //        } else if (user.PositionId == 5)
-        //        {
-        //            newUser.RoleId = 2;
-        //        }
+                // Attribution du rôle en fonction du poste occupé (si différent du rôle par défaut)
+                if (model.PositionId == 1 || model.PositionId == 2 || model.PositionId == 3 || model.PositionId == 4)
+                {
+                    newUser.RoleId = 1;
+                }
+                else if (model.PositionId == 5)
+                {
+                    newUser.RoleId = 2;
+                }
 
-        //        _context.Add(newUser);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(user);
-        //}
+                var result = await _userManager.CreateAsync(newUser, model.Password!);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View(model);
+        }
 
         //// GET: Users/Edit/5
         //public async Task<IActionResult> Edit(int? id)

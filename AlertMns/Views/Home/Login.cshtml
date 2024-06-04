@@ -1,0 +1,42 @@
+﻿@using AlertMns.ViewModels
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div id="connexion-container" class="container-fluid full-centered bg-gradientblue">
+    <div class="row">
+        <div class="col text-light">
+            <img id="logo-alertmns" src="~/img/AlertMNS-logo.svg" alt="Logo AlertMNS" class="img-fluid">
+            <p id="welcome-text">Bonjour, merci de vous identifier</p>
+            <form asp-action="Login" id="form-connection" method="post">
+                @* Ajout de la div ligne suivante pour asp-validation *@
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="mb-3 w-50">
+                    <label asp-for="Email">Identifiant (e-mail)*</label>
+                    <input asp-for="Email" class="form-control" id="email">
+                </div>
+                <div class="mb-3 w-50">
+                    <label asp-for="Password">Mot de passe*</label>
+                    <input asp-for="Password" class="form-control" id="password">
+                </div>
+                <div class="mb-3 w-50 form-check">
+                    <label class="form-check-label">
+                        <input asp-for="RememberMe" class="form-check-input" /> @Html.DisplayNameFor(a=>a.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button type="submit" value="Home" class="btn btn-primary">Connexion</button>
+                </div>
+                <div>
+                    <a class="home-password-link" href="#">Mot de passe oublié ?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

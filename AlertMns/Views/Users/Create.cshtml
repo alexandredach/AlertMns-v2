@@ -1,4 +1,4 @@
-﻿@model AlertMns.ViewModels.UserViewModel
+﻿@model AlertMns.ViewModels.RegisterViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -40,6 +40,11 @@
                             <label asp-for="Password" class="control-label">Mot de passe</label>
                             <input asp-for="Password" type="password" class="form-control input-registration" />
                             <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="control-label">Confirmer mot de passe</label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control input-registration" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                         </div>
                         <div class="mb-3 w-50 form-group">
                             <label asp-for="CompanyId">Organisation</label><br />
