@@ -1,4 +1,9 @@
-﻿<nav class="navbar navbar-expand-lg bg-darkblue">
+﻿@using Microsoft.AspNetCore.Identity;
+@using AlertMns.Models
+@inject SignInManager<User> signInManager
+@inject UserManager<User> userManager
+
+<nav class="navbar navbar-expand-lg bg-darkblue">
     <div class="d-flex flex-column h-100" >
         <div class="p-3 mb-2">
             <div class="d-flex">
@@ -76,8 +81,19 @@
             <div class="d-flex align-items-center">
                 <img src="~/img/icon-user.png" id="icon-user" class="rounded-circle" alt="Icône utilisateur">
                 <div id="menu-user-fullname">
-                    <p class="mb-0 fw-bold">John DOE</p>
-                    <p class="mb-0 fw-light fst-italic">Responsable RH</p>
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        var user = await userManager.FindByNameAsync(User.Identity.Name);
+                        if (user != null)
+                        {
+                            <p class="mb-0 fw-bold">@user.FirstName @user.LastName</p>
+                            <p class="mb-0 fw-bold">@user.PositionId</p>
+                            <p class="mb-0 fw-light fst-italic">
+                                <a asp-action="Logout" asp-controller="Account">Se déconnecter</a>
+                            </p>
+                        }
+                        
+                    }
                 </div>
             </div>
             <div class="align-self-center">

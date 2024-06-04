@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/AlertMns.styles.css" asp-append-version="true" />
 </head>
 <body>
-    @if (ViewContext.RouteData.Values["Controller"].ToString() != "Home" ||
+    @if (ViewContext.RouteData.Values["Controller"].ToString() != "Account" ||
     ViewContext.RouteData.Values["Action"].ToString() != "Login")
     {
         @Html.Partial("_NavBar")

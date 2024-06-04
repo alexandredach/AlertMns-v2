@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AlertMns.Controllers
 {
+    // CREATE et LOGIN > ACCOUNTCONTROLLER
     public class UsersController : Controller
     {
         private readonly DataContext _context;
